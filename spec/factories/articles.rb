@@ -19,7 +19,7 @@
 #
 FactoryBot.define do
   factory :article do
-    title { "MyString" }
+    sequence(:title, "title_1")
     body { "MyText" }
   end
 end

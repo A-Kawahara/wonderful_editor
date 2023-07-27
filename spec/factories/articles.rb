@@ -21,5 +21,7 @@ FactoryBot.define do
   factory :article do
     sequence(:title, "title_1")
     body { "MyText" }
+
+    user
   end
 end

@@ -10,4 +10,4 @@ AllCops:
   TargetRubyVersion: 2.7  
 
 RSpec/MultipleExpectations:
-  Max: 3
+  Max: 5

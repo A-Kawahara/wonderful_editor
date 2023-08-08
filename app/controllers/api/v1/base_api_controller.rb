@@ -1,9 +1,7 @@
 class Api::V1::BaseApiController < ApplicationController
-    
-    private
-  
-    def current_user
-        @current_user ||= User.first
-    end
+  private
 
+    def current_user
+      @current_user ||= User.first
+    end
 end

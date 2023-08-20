@@ -56,7 +56,7 @@ RSpec.describe "Api::V1::Articles", type: :request do
 
     let!(:current_user_test) { create(:user) }
     before {
-      allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user_test)
+      allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user_test) # rubocop:disable RSpec/AnyInstance
     }
 
     context "適切なパラメータを送信したとき" do
@@ -87,7 +87,7 @@ RSpec.describe "Api::V1::Articles", type: :request do
 
     let(:params) { { article: attributes_for(:article) } }
     let(:current_user_test) { create(:user) }
-    before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user_test) }
+    before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user_test) } # rubocop:disable RSpec/AnyInstance
 
     context "自分が所持している記事のレコードを更新しようとするとき" do
       let(:article) { create(:article, body: "BODY", user: current_user_test) }
@@ -114,7 +114,7 @@ RSpec.describe "Api::V1::Articles", type: :request do
 
     let(:current_user_test) { create(:user) }
     let(:article_id) { article.id }
-    before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user_test) }
+    before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user_test) } # rubocop:disable RSpec/AnyInstance
 
     context "自分が所持している記事のレコードを削除しようとするとき" do
       let!(:article) { create(:article, user: current_user_test) }

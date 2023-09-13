@@ -1,6 +1,6 @@
 module Api::V1
   class ArticlesController < BaseApiController
-    skip_before_action :authenticate_user!, only: %i[index show]
+    skip_before_action :authenticate_user!, only: %i[index show], raise: false
 
     def index
       articles = Article.published.order(updated_at: :desc)
@@ -15,7 +15,7 @@ module Api::V1
     def create
       article = current_user.articles.new(article_params)
 
-      if article.save
+      if article.save!
         render json: article, status: :created, serializer: Api::V1::ArticleSerializer
       else
         render json: article.errors, status: :unprocessable_entity
@@ -40,7 +40,9 @@ module Api::V1
     private
 
       def article_params
-        params.require(:article).permit(:title, :body, :status)
+        # binding.pry
+        params.permit(:title, :body, :status)
+        # params.require(:article).permit(:title, :body, :status)
       end
   end
 end

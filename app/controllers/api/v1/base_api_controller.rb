@@ -1,5 +1,5 @@
 class Api::V1::BaseApiController < ApplicationController
-  before_action :authenticate_user!
+  protect_from_forgery with: :null_session
 
   alias_method :current_user, :current_api_v1_user
   alias_method :authenticate_user!, :authenticate_api_v1_user!
